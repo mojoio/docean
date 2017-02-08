@@ -1,6 +1,6 @@
 {
   "name": "docean",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "digitalocean API wrapper",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
