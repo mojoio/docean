@@ -1,0 +1,24 @@
+{
+  "name": "docean",
+  "version": "1.0.0",
+  "description": "digitalocean API wrapper",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "test": "(npmts)"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/mojoio/docean.git"
+  },
+  "keywords": [
+    "digitalocean",
+    "API"
+  ],
+  "author": "Lossless GmbH",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/mojoio/docean/issues"
+  },
+  "homepage": "https://gitlab.com/mojoio/docean#README"
+}
