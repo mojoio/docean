@@ -1,5 +1,5 @@
-coverage/
+.nogit/
 node_modules/
-pages/
+coverage/
 public/
-
+pages/
