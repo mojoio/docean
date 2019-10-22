@@ -1,2 +1,2 @@
-vars:
+required:
   - DO_API_TOKEN

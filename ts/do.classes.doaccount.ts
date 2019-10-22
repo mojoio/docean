@@ -1,7 +1,8 @@
 import * as plugins from './do.plugins';
+import { DigitalOceanDroplet } from './do.classes.dodroplet';
 
 export class DigitalOceanAccount {
-  token: string;
+  public token: string;
 
   constructor(tokenArg: string) {
     this.token = tokenArg;
@@ -10,7 +11,7 @@ export class DigitalOceanAccount {
   /**
    * the main request method used
    */
-  async request(routeArg: string, methodArg: string, payloadArg?: any) {
+  public async request(routeArg: string, methodArg: string, payloadArg?: any) {
     const response = await plugins.smartrequest.request(
       `https://api.digitalocean.com/v2${routeArg}`,
       {
@@ -23,5 +24,9 @@ export class DigitalOceanAccount {
       }
     );
     return response.body;
+  }
+
+  public async listDroplets(): Promise<DigitalOceanDroplet[]> {
+    return await DigitalOceanDroplet.listDroplets(this);
   }
 }

@@ -9,18 +9,24 @@ let testAccount: digitalocean.DigitalOceanAccount;
 let testDroplet: digitalocean.DigitalOceanDroplet;
 
 tap.test('should create a valid account instance', async () => {
-  testAccount = new digitalocean.DigitalOceanAccount(process.env.DO_API_TOKEN);
+  testAccount = new digitalocean.DigitalOceanAccount(testQenv.getEnvVarOnDemand('DO_API_TOKEN'));
   expect(testAccount).to.be.instanceOf(digitalocean.DigitalOceanAccount);
 });
 
 tap.test('should be able to create a droplet', async () => {
-  await digitalocean.DigitalOceanDroplet.createDroplet({
-    account: testAccount,
+  const droplet = await digitalocean.DigitalOceanDroplet.createDroplet(testAccount, {
     name: 'mydroplet1',
     image: 'ubuntu-18-04-x64',
     region: 'fra1',
     size: 's-1vcpu-1gb'
   });
+  console.log(droplet);
 });
+
+tap.test('should list all dreoplets', async () => {
+  const droplets = await testAccount.listDroplets();
+  expect(droplets.length).to.equal(1);
+});
+
 
 tap.start();
