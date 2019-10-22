@@ -28,5 +28,11 @@ tap.test('should list all dreoplets', async () => {
   expect(droplets.length).to.equal(1);
 });
 
+tap.test('should delete all dreoplets', async () => {
+  const droplets = await testAccount.listDroplets();
+  for (const droplet of droplets) {
+    await droplet.remove();
+  }
+});
 
 tap.start();

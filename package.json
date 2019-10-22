@@ -2,15 +2,14 @@
   "name": "@mojoio/digitalocean",
   "version": "1.0.4",
   "private": false,
-  "description": "a digital ocean API wrapper by Lossless GmbH",
+  "description": "an unofficial DigitalOcean API abstraction package by Lossless GmbH",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "author": "Lossless GmbH",
   "license": "MIT",
   "scripts": {
     "test": "(tstest test/)",
-    "build": "(tsbuild)",
-    "format": "(gitzone format)"
+    "build": "(tsbuild)"
   },
   "devDependencies": {
     "@gitzone/tsbuild": "^2.1.17",
@@ -23,5 +22,16 @@
   },
   "dependencies": {
     "@pushrocks/smartrequest": "^1.1.36"
-  }
+  },
+  "files": [
+    "ts/**/*",
+    "ts_web/**/*",
+    "dist/**/*",
+    "dist_web/**/*",
+    "dist_ts_web/**/*",
+    "assets/**/*",
+    "cli.js",
+    "npmextra.json",
+    "readme.md"
+  ]
 }

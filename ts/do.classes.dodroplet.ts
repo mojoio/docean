@@ -5,12 +5,15 @@ import { DigitalOceanAccount } from './do.classes.doaccount';
 
 export class DigitalOceanDroplet {
   // STATIC
-  public static async createDroplet(doAccountRef: DigitalOceanAccount, dropletCreateOptions: {
-    name: string;
-    size: TDropletSizes;
-    region: TRegions;
-    image: string | TImages;
-  }): Promise<DigitalOceanDroplet> {
+  public static async createDroplet(
+    doAccountRef: DigitalOceanAccount,
+    dropletCreateOptions: {
+      name: string;
+      size: TDropletSizes;
+      region: TRegions;
+      image: string | TImages;
+    }
+  ): Promise<DigitalOceanDroplet> {
     const response = await doAccountRef.request('/droplets', 'POST', {
       name: dropletCreateOptions.name,
       region: dropletCreateOptions.region,
@@ -27,7 +30,7 @@ export class DigitalOceanDroplet {
     return new DigitalOceanDroplet(doAccountRef, response.droplet);
   }
 
-  public static async listDroplets (doAccountRefArg: DigitalOceanAccount) {
+  public static async listDroplets(doAccountRefArg: DigitalOceanAccount) {
     const response = await doAccountRefArg.request('/droplets?page=1&per_page=200', 'GET');
     const droplets: DigitalOceanDroplet[] = [];
     for (const dropletData of response.droplets) {
@@ -37,6 +40,8 @@ export class DigitalOceanDroplet {
   }
 
   // INSTANCE
+  public doAccountRef: DigitalOceanAccount;
+
   public id: number;
   public name: string;
   public memory: number;
@@ -90,6 +95,11 @@ export class DigitalOceanDroplet {
   public tags: ['web'];
 
   constructor(doAccountRef: DigitalOceanAccount, dropletData: any) {
+    this.doAccountRef = doAccountRef;
     Object.assign(this, dropletData);
+  }
+
+  public async remove() {
+    await this.doAccountRef.request(`/droplets/${this.id}`, 'DELETE');
   }
 }
