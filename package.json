@@ -1,6 +1,6 @@
 {
   "name": "@mojoio/digitalocean",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "private": false,
   "description": "an unofficial DigitalOcean API abstraction package by Lossless GmbH",
   "main": "dist/index.js",
